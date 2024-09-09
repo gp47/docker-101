@@ -14,6 +14,6 @@ Learn to build and deploy your distributed applications easily to the cloud with
 - [Use multi-stage builds](docs/04.docker-multiStage-build.md)
 - [Don't install unnecessary packages](docs/05.the-principle-of-DIUP.md)
 - [Decouple application](docs/06.decouple-application.md)
-- Minimize the number of layers.
-- Sort multi-line arguments.
-- Leverage the build cache.
+- [Minimize the number of layers](docs/07.Minimize-the-number-of-layers.md)
+- [Sort multi-line arguments](docs/08.multi-line-arguments.md)
+- [Leverage the build cache](docs/09.leverage-the-build-cache.md)
