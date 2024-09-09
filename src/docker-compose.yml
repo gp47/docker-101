@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # Frontend service (React app)
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"  # Expose port 80 for the frontend
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  # Backend service (Node.js API)
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"  # Expose port 3000 for the backend
+    environment:
+      - DATABASE_URL=postgres://user:password@db:5432/mydb
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  # Database service (PostgreSQL)
+  db:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+# Define a shared network for the services
+networks:
+  app-network:
+    driver: bridge
+
+# Define a named volume for the database
+volumes:
+  postgres-data:
